@@ -1,0 +1,92 @@
+<div class="blogs-shelf">
+</div>
+
+<div id="load-more-btn" class="j-calltoaction-wrapper j-calltoaction-align-2">
+    <button class="snhg-button-accent" onclick="LoadMoreNews()" data-action="button" data-title="mehr erfahren">Mehr Anzeigen</button>
+</div>
+<script>
+/* <![CDATA[ */
+
+const AnzahlBlogPreviews = 20;
+const AnzahlBuchstabenInPreview = 220;
+let nextPage = 0;
+
+function truncate(input, num) {
+   if (input.length > num) {
+      return input.substring(0, num) + '...';
+   }
+   return input;
+};
+
+function LoadMoreNews() {
+    ajax(`/app/blogpage?page=${nextPage}&category=news`, 'get', (obj) => {
+        var div = document.createElement('div');
+        div.innerHTML = obj.responseText.trim();
+        
+        let blogList = createElementsFromHTML(obj.responseText);
+        console.log(blogList);
+        
+        let blogShelf = document.querySelector(".blogs-shelf");
+
+        for (let i=0; i < Math.min(AnzahlBlogPreviews+1, blogList.length); i++) {
+
+            let summary = "";
+            
+            try {
+                summary = truncate(blogList[i].childNodes[4].innerHTML, AnzahlBuchstabenInPreview);
+            } catch (error) {
+                isDog = false;
+                continue;
+            }
+
+            let trimmedString = summary.substr(0, AnzahlBuchstabenInPreview);
+            trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" "))) + "...";
+
+            let h2Title = document.createElement("h2");
+            h2Title.innerHTML = blogList[i].childNodes[3].querySelector("h2").innerHTML;
+            let img = blogList[i].querySelector("img");
+
+            let spanDescr = document.createElement("span");
+            spanDescr.innerHTML = trimmedString;
+            let blogCard = document.createElement("a");
+            blogCard.setAttribute('href', blogList[i].querySelector("h2").parentElement.getAttribute("href"));
+            blogCard.classList.add("special-dog-card");
+            blogCard.classList.add("news-card");
+            let blogCardCol1 = document.createElement("div");
+            blogCardCol1.append(img);
+            
+            let blogCardCol2Top = document.createElement("div");
+            let blogCardCol2 = document.createElement("div");
+            
+            blogCardCol2Top.append(h2Title, spanDescr);
+            blogCardCol2.append(blogCardCol2Top);
+            blogCard.append(blogCardCol1, blogCardCol2);
+            blogShelf.append(blogCard);
+            let spacer = document.createElement("div");
+            spacer.classList.add("cc-m-spacer");
+            spacer.style.height = "30px";
+            blogShelf.append(spacer);
+        }
+
+        });
+
+        // Test if there is a next Page
+        ajax(`/app/blogpage?page=${nextPage+1}&category=news`, 'get', (obj) => {
+            let blogList = createElementsFromHTML(obj.responseText);
+            if (blogList[0].innerHTML.startsWith('<div id="cc-matrix')) {
+                document.getElementById("load-more-btn").style.display = "none";
+            }
+        });
+    
+    if (nextPage == 0) {
+        nextPage = 2; //Page 1 is the same as 0 but with useless title elements etc.
+    } else {
+        nextPage++;
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function(event) {
+    LoadMoreNews();
+});
+/*]]>*/
+</script>

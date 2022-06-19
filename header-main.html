@@ -1,0 +1,1104 @@
+<meta name="google-site-verification" content="j6ccS90qQGiv0B_bKqp_5UJIxwofi_2tz9y7O0kf86k" />
+
+<style>
+
+    :root {
+    --main-accent-color: #ff9f10;
+    --card-background: #fdfbf7;
+    }
+
+    .j-comment {
+        display: none;
+    }
+
+    /* <![CDATA[ */
+    .j-module a, .j-static-page a {
+        color: var(--main-accent-color);
+    }
+
+    .j-blog-post--tags-wrapper {
+        display: none;
+    }
+
+    a {
+        border: none !important;
+    }
+
+    .cc-m-form-view-input-wrapper input, .cc-m-form-view-input-wrapper textarea {
+        border-radius: 16px;
+        padding-left: 11px !important;
+        resize: none;
+    }
+
+    .cc-m-confirmationtext strong {
+        font-weight: normal;
+    }
+
+    .dogshelf-wrapper {
+        margin: 0px -8px 0px -8px;
+    }
+
+    .j-module img {
+        border-radius: 5px;;
+    }
+
+    .dogshelf-header {
+        margin: 20px 0px 8px 8px !important;
+    }
+
+    .gssb_c {
+        position: fixed !important;
+    }
+
+    .dog-card {
+    height: 190px;
+        width: 169px;
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.397);
+        border-radius: 5px;
+        margin: 10px 8px 8px 8px;
+        background: #fdfbf7;
+    }
+
+    .dog-card:hover h2 {
+        color: var(--main-accent-color) !important;
+    }
+
+    .home-news-card {
+        width: 100%;
+        height: 220px;
+        display: flex;
+    }
+
+    .home-news-card div:nth-of-type(1) img {
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+    }
+
+    .special-dog-card {
+        width: 100%;
+        height: 220px;
+        background: #fdfbf7;
+        display: flex;
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12);
+        text-decoration: none;
+    }
+
+    .special-dog-card h2 {
+        font-weight: bold !important;
+    }
+
+    .special-dog-card div:nth-of-type(1) img {
+        width: 220px;
+        height: 220px;
+        object-fit: cover;
+    }
+
+    .special-dog-card p {
+        margin-bottom: 15px;
+    }
+
+    hr {
+        border-color: rgb(170, 170, 170) !important;
+    }
+
+    .dog-card-expand-button hr {
+        border-color: rgba(0, 0, 0, 0.144);
+    }
+
+    .special-dog-card div:nth-of-type(2) {
+        color: #797979;
+    }
+
+    .special-dog-card div:nth-of-type(2) div:nth-of-type(1n) {
+        box-sizing: border-box;
+        max-height: 190px;
+        padding: 30px 50px;
+    }
+
+    .dog-card-expand-button {
+        padding: 0px;
+        height: 50px;
+        box-sizing: border-box;
+        text-align: center;
+        line-height: 12px;
+        overflow: hidden;
+    }
+
+    .special-dog-card div:nth-of-type(2) {
+        width: 100%;
+        max-width: calc(100% - 200px);
+        height: auto;
+        background: #fdfbf7;
+    }
+    
+    .news-card:hover h2 {
+        color: var(--main-accent-color) !important;
+    }
+
+    .dog-card-expandarea {
+        height: fit-content;
+        overflow: hidden;
+        width: 100%;
+        margin-bottom: 32px;;
+        background: #fdfbf7;
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.12);
+        padding-left: 265px;
+        box-sizing: border-box;
+    }
+
+    .dog-card-expandarea .post {
+        padding-top: 25px;
+    }
+    
+    .dog-card img {
+        width: 100%;
+        height: 155px;
+        object-fit: cover;
+        border-radius: 5px 5px 0px 0px;
+    }
+    
+    .dog-card h2 {
+        margin-top: 0px;
+        margin-left: 5px;
+        font-size: 19px !important;
+        text-align: center;
+    }
+
+    
+    .dog-card p {
+        margin-top: 0px;
+        padding: 0px 6px;
+        border-radius: 20px;
+        width: fit-content;
+        color: white;
+        margin-bottom: 4px;
+        margin-left: 5px;
+        box-shadow: 4px 4px 7px #1117;
+        font-size: 14px;
+    }
+        
+    .search-button {
+        position: fixed !important;
+        right: 20px;
+        z-index: 100;
+        top: 20px;
+        fill: #4d4d4d;
+        transition: fill 0.3s;
+    }
+
+    .search-button:hover {
+        fill: var(--main-accent-color);
+    }
+
+    .gsc-search-button-v2 {
+        background-color: var(--main-accent-color) !important;
+        border-color: var(--main-accent-color) !important;
+    }
+
+    @media (max-width: 900px) {
+
+        .special-dog-card {
+            height: 193px;
+        }
+
+        .special-dog-card h2 {
+            font-size: 14px !important;
+        }
+        
+        .special-dog-card div:nth-of-type(2) {
+            max-width: calc(100% - 140px);
+            height: 165px;
+            background: #fdfbf7;
+        }
+        .special-dog-card div:nth-of-type(2) div:nth-of-type(1n) {
+            box-sizing: border-box;
+            height: 200px;
+            padding: 10px 20px 10px 20px;
+            overflow: hidden;
+        }
+
+        .special-dog-card div:nth-of-type(1) img {
+            width: 140px;
+            height: 200px;
+        }
+
+        .dogshelf-wrapper {
+            margin: 0px -4px 0px -4px;
+        }
+
+        .dogshelf-header {
+            margin: 10px 15px 8px 4px !important;
+        }
+    }
+
+    
+    @media (max-width: 600px) {
+
+        .dog-card {
+            height: 200px;
+            width: calc(50% - 8px);
+            margin: 10px 4px 20px 4px;
+        }
+
+        .special-dog-card div:nth-of-type(1) img {
+            width: 100%;
+            height: 230px;
+        }
+
+        .special-dog-card {
+            height: 420px;
+        }
+
+        .special-dog-card div:nth-of-type(1) {
+            text-align: center;
+        }
+
+        .special-dog-card div:nth-of-type(2) {
+            max-width: 100%;
+        }
+
+        .dog-card img {
+            height: 165px;
+        }
+
+        .special-dog-card {
+            display: block;
+        }
+    }
+    
+    .dogcard-symbols {
+        position: absolute;
+        bottom: 35px;
+        color: white !important;
+    }
+
+    .j-blog-header {
+        font-size: 40px;
+    }
+
+    .thumbnail-symbols {
+        height: 100%;
+        margin-bottom: -180px;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        pointer-events: none;
+    }
+
+    
+    .j-blog-post--header p {
+        padding: 2px 8px;
+        border-radius: 20px;
+        width: fit-content;
+        color: white;
+        margin-top: 4px;
+        display: inline;
+        margin-right: 10px;
+        font-size: 18px;
+    }
+
+    
+    .fit-content {
+        height: fit-content !important;
+    }
+        
+
+    .notfall {
+        background: #ec4949;
+    }
+
+    .reserviert {
+        background: var(--main-accent-color);
+    }
+
+    .in-deutschland {
+        background: var(--main-accent-color);
+    }
+
+    .hat-anfrage {
+        background: var(--main-accent-color);
+    }
+
+    .ps-gefunden {
+        background: var(--main-accent-color);
+    }
+
+    #dogs-list #cc-matrix- .j-imageSubtitle .cc-imagewrapper a img {
+        object-fit: cover;
+        width: 180px;
+        height: 180px;
+    }
+
+
+    #dogs-list #cc-matrix- div:nth-of-type(4),
+    .j-blog #cc-matrix- div:nth-of-type(5),
+    .j-blog #cc-matrix- div:nth-of-type(6) {
+        display: none;
+    }
+
+
+    a .j-blog-headline {
+        font-size: 16px !important;
+        font-weight: bold !important;
+        margin-top: -14px !important;
+    }
+
+    #dogs-list #cc-matrix- .j-spacing {
+        display: none;
+    }
+
+    .j-blog-meta .j-text {
+        display: none;
+    }
+
+    .jtpl-header {
+        height: 64px;
+        max-height: 64px;
+        position: fixed;
+        top: 0px;
+        transition: visibility 0.3s linear, opacity 0.3s linear;
+    }
+
+    #___gcse_0 {
+        visibility: hidden;
+    }
+
+
+    .jmd-nav__link--current {
+        border: none !important;
+    }
+
+    /*--Mobile Menu ausklapp Buttons--*/
+
+    .jtpl-navigation__inner .jmd-nav__toggle-button::after {
+        -ms-transform: translate(-7px, 0px) rotate(-45deg);
+        transform: translate(4.5px, 0px) rotate(-45deg);
+    }
+
+    .jtpl-navigation__inner .jmd-nav__toggle-button::before {
+        -ms-transform: translate(6px, 0px) rotate(45deg);
+        transform: translate(-4.5px, 0px) rotate(45deg);
+    }
+
+    .jmd-nav__item--last-opened .jmd-nav__toggle-button::after {
+        -ms-transform: translate(-7px, 0px) rotate(45deg) !important;
+        transform: translate(4.5px, 0px) rotate(45deg) !important;
+    }
+
+    .jmd-nav__item--last-opened .jmd-nav__toggle-button::before {
+        -ms-transform: translate(6px, 0px) rotate(-45deg) !important;
+        transform: translate(-4.5px, 0px) rotate(-45deg) !important;
+    }
+
+    /*------*/
+
+    .jtpl-navigation__inner {
+        margin-top: -10px;
+    }
+    
+    @media screen and (min-width: 1170px) {
+        .jtpl-navigation__inner .j-nav-has-children > ul {
+            box-shadow: 0px 0px 8px #00000033;
+        }
+
+    } 
+
+    .jtpl-navigation__inner {
+        background: #fff;
+    }
+
+    .jtpl-title {
+        display: none;
+    }
+
+    .banner-bottom {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        height: 600px;
+        width: 100%;
+        z-index: 100;
+    }
+
+    .banner-bottom-content h2 {
+        color: white !important;
+        font-size: 33px !important;
+    }
+
+    
+    .banner-bottom-content {
+        color: white;
+        max-width: 350px;
+        height: fit-content;
+        margin: 80px 10% auto 5px;
+        border-radius: 5px;
+        padding: 30px;
+        background: #aa9f93;
+        min-width: 240px;
+    }
+
+    .banner-container {
+        height: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 80px;
+        gap: 0px 0px;
+        grid-auto-flow: row;
+        grid-template-areas: 
+        "Banner Banner Banner Banner Banner" 
+        "a a b c c";
+        }
+
+    .banner-banner {
+        grid-area: Banner;
+        grid-row-end: end;
+        background-color: #666;
+        background-image: url("https://image.jimcdn.com/app/cms/image/transf/dimension=2048x2048:format=jpg/path/sfdce5541d069a958/image/ia03eec9f65a1fc5f/version/1651091240/image.jpg");
+        background-size: auto;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: right 0px;
+    }
+
+    .banner-bottom-wrapper {
+        max-width: 960px;
+        width: 100%;
+        padding: 0 20px 50px;
+        margin: 0 auto;
+        box-sizing: border-box;
+    }
+
+    .banner-container a {
+        display: block;;
+        height: 100%;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+
+    .banner-container img {
+        max-width: 100%;
+        max-height: 33px;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .banner-a { background: white; grid-area: a; }
+
+    .banner-b { background: white; grid-area: b; }
+
+    .banner-c { background: white; grid-area: c; }
+
+        
+    .sidebar-options-box {
+        padding-top: 570px;
+    }
+
+    .jtpl-content__inner {
+        padding-top: 70px;
+    }
+
+    /*hierauf achten, falls es noch andere breadcrumb menues gibt, die nicht unerwuenscht sind.*/
+    .jtpl-breadcrumb {
+        display: none;
+    }
+
+    .contact-card {
+        width: 245px;
+        border-radius: 10px;
+        box-shadow: 0px 3px 15px #0004;
+        text-align: center;
+        margin-top: 40px;
+        height: 320px;
+        margin-bottom: 50px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .contact-card-content {
+        padding: 20px;
+        padding-top: 0px;
+        height: 170px;
+    }
+
+    .contact-card h3 {
+        font-size: 18px;
+    }
+
+    .contact-card .snhg-gradient {
+        background: var(--main-accent-color);
+        height: 15px;
+        border-radius: 0px 0px 10px 10px;
+    }
+
+    .ct-title {
+        font-weight: bold;
+    }
+
+    .contact-card img {
+        margin-top: -46px;
+        border-radius: 50%;
+        object-fit: cover;
+        width: 160px;
+        height: 160px;
+    }
+
+    .snhg-button {
+        cursor: pointer;
+        color: #000;
+        background-color: #fff;
+        transition: all 0.2s;
+        border-style: none;
+        border-radius: 30px;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        height: 55px;
+    }
+
+    .snhg-button-accent {
+        cursor: pointer;
+        color: white;
+        background-color: var(--main-accent-color);
+        transition: all 0.2s;
+        border-style: none;
+        border-radius: 30px;
+        padding: 2px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        height: 55px;
+    }
+
+
+    .snhg-button:hover, .snhg-button-accent:hover {
+        color: black;
+        background-color: #f5dcbe !important;
+    }
+
+    
+    .donate-button {
+        color: black;
+        font-weight: bold;
+        background: white;
+        border-radius: 4px 0px 0px 4px;
+        float: left; margin-right: 2px;
+    }
+
+    .donate-button:hover {
+        background: #e4ded8;
+        color: black;
+    }
+
+    
+    .donate-button-paypal {
+        padding: 0px;
+        background: #002F86;
+        border-radius: 0px 4px 4px 0px;
+        float: left;
+        height: 55px;
+    }
+
+    .donate-button-paypal:hover {
+        background: #051c46;
+    }
+
+    .cc-nav-level-1,
+    .j-nav-level-1,
+    .cc-nav-level-2,
+    .j-nav-level-2 {
+        box-shadow: none;
+    }
+
+    .jtpl-logo {
+        display: none;
+        height: 350px;
+    }
+
+    @media screen and (max-width: 600px) {
+        .jtpl-logo {
+            height: 200px;
+        }
+    }
+
+    .jqbga-slider {
+        display: none;
+    }
+
+    .jtpl-slope {
+        height: 20px;
+    }
+
+    #page-2459496690 .jtpl-content__inner {
+        padding-top: 0px;
+    }
+
+    #page-2459496690 .jtpl-slope {
+        height: 100px;
+    }
+
+    #page-2459496690 .jtpl-logo {
+        display: block;
+    }
+
+    #page-2459496690 .jqbga-slider {
+        display: block !important;
+    }
+
+    .captcha {
+        background: white !important;
+    }
+
+    .captcha character refresh {
+        border: none;
+    }
+
+    .snhg-home-logo {
+        height: 100%;
+        width: 300px;
+    }
+
+    @media screen and (max-width: 1169px) {
+        .jtpl-navigation {
+            margin-top: 65px;
+        }
+                
+        .search-button {
+            right: 70px;
+        }
+    }
+
+    .snhg-home-logo a {
+        background-color: #0000;
+        background-image: url(https://image.jimcdn.com/app/cms/image/transf/none/path/sfdce5541d069a958/image/ifa220de2c95f7e05/version/1621257520/image.png);
+        background-repeat: no-repeat;
+        background-size: 200px;
+        position: absolute;
+        left: 5%;
+        height: 100%;
+        width: 200px;
+    }
+
+    .hide {
+        visibility: hidden;
+        opacity: 0%;
+    }
+
+    #page-2459502090 #load-more-blog-posts,
+    #page-2459823190 #load-more-blog-posts,
+    #page-2460144890 #load-more-blog-posts {
+        display: none;
+    }
+
+    /*]]>*/
+</style>
+
+
+<script async="async" src="https://cse.google.com/cse.js?cx=01d37e6331762b5e2"></script>
+
+<script type="text/javascript" defer="defer">
+//<![CDATA[
+
+    function parseSymbols(summary, addTo) {
+        let hideFromUpdated = false;
+        if (summary.includes(" Notfall") || summary.includes("Notfall")) {
+            let pt = document.createElement("p");
+            pt.classList.add("notfall")
+            pt.innerHTML = "Notfall";
+            addTo.appendChild(pt);
+        }
+
+        if (summary.includes(" Hat eine Anfrage") || summary.includes("Hat eine Anfrage")) {
+            let pt = document.createElement("p");
+            pt.classList.add("hat-anfrage")
+            pt.innerHTML = "Hat eine Anfrage";
+            hideFromUpdated = true;
+            addTo.appendChild(pt);
+        }
+
+        if (summary.includes(" PS") || summary.includes("PS")) {
+            let pt = document.createElement("p");
+            pt.classList.add("ps-gefunden")
+            pt.innerHTML = "Pflegestelle gefunden";
+            hideFromUpdated = true;
+            addTo.appendChild(pt);
+        }
+
+        if (summary.includes(" Reserviert") || summary.includes("Reserviert")) {
+            let pt = document.createElement("p");
+            pt.classList.add("reserviert")
+            pt.innerHTML = "Reserviert";
+            hideFromUpdated = true;
+            addTo.appendChild(pt);
+        }
+
+        if (summary.includes("In D")) {
+            const dInd =  summary.indexOf("In D");
+            let pt = document.createElement("p");
+            pt.classList.add("in-deutschland");
+            try {
+                pt.innerHTML = summary[dInd+1];
+            }
+            catch (error) {
+                pt.innerHTML = "In Deutschland";
+            }
+            addTo.appendChild(pt);
+        }
+        return hideFromUpdated
+    }
+
+
+    function parseLongDescription(summary) {
+        if (summary.includes("preview:")) {
+            const ind = summary.indexOf("preview:");
+        }
+    }
+
+    function ajax(url, method, callback, params = null) {
+        var obj;
+        try {
+            obj = new XMLHttpRequest();
+        } catch (e) {
+            try {
+                obj = new ActiveXObject("Msxml2.XMLHTTP");
+            } catch (e) {
+                try {
+                    obj = new ActiveXObject("Microsoft.XMLHTTP");
+                } catch (e) {
+                    alert("Your browser does not support Ajax.");
+                    return false;
+                }
+            }
+        }
+        obj.onreadystatechange = function () {
+            if (obj.readyState == 4) {
+                callback(obj);
+            }
+        }
+        obj.open(method, url, true);
+        obj.send(params);
+        return obj;
+    }
+
+    function createElementsFromHTML(htmlString) {
+        var div = document.createElement('div');
+        div.innerHTML = htmlString.trim();
+        return Array.from(div.childNodes);
+    }
+
+    const images = document.getElementsByTagName("img");
+    for (let image of images) {
+        image.addEventListener("load", fadeImg);
+        image.style.opacity = "0";
+    }
+
+    function fillDogTable(summary, tbl) {
+
+        if (tbl == null) return;
+
+        tbl.classList.add("mceEditable");
+        tbl.style.width = '100%';
+
+        for (let i = 0; i < 3; i++) {
+            tr = tbl.insertRow();
+            tbl.s
+            for (let j = 0; j < 2; j++) {
+                const td = tr.insertCell();
+            }
+        }
+        tbl.rows[0].cells[0].innerHTML = "<b>Geschlecht<\/b>";
+        tbl.rows[0].cells[1].innerHTML = summary[1];
+        tbl.rows[1].cells[0].innerHTML = "<b>geboren ca.<\/b>";
+        tbl.rows[1].cells[1].innerHTML = summary[2];
+        tbl.rows[2].cells[0].innerHTML = "<b>Schulterhöhe ca.<\/b>";
+        tbl.rows[2].cells[1].innerHTML = summary[3] === " ??cm" ? "Noch nicht gemessen" : summary[3];
+    }
+
+    function sortDogs(dogList, dogsOnPage, dogShelfWrapper, tag, dogsSmall=null, dogsMiddle=null, dogsBig=null, maxDogsOnPage=10000) {
+        let hasSmallDogs = false;
+        let hasMediumDogs = false;
+        let hasBigDogs = false;
+
+        cards = [];
+
+        for (let i=0; i < dogList.length; i++) {
+            let currentUrl;
+
+            if  (dogList[i].id != "cc-matrix-") {
+                continue;
+            }
+
+            let l = dogList[i].querySelector("a");
+            if (l == null) {
+                continue;
+            }
+
+            currentUrl = dogList[i].querySelector("a").getAttribute("href");
+
+            if (dogsOnPage.indexOf(currentUrl) > -1) {
+                return;
+            }
+
+            if (dogList[i].childNodes[3] == undefined) continue;
+
+            let title = dogList[i].childNodes[3].querySelector("h2").innerHTML;
+
+            if (title.includes(" und ") || title.includes("&")) {
+                continue;
+            }
+
+                    
+            if (dogsOnPage.length >= maxDogsOnPage) {
+                
+                continue;
+            }
+            
+            let isDog = true;
+            let cHeight = 20;
+            let summary = "";
+            try {
+                summary = dogList[i].childNodes[4].innerHTML;
+                summary = summary.replace(/(\r\n|\n|\r)/gm, "").split(";");
+                cHeight = summary[3] == "??cm" ? 20 : summary[3].substring(0, 2);
+            } catch (error) {
+                isDog = false;
+                continue;
+            }
+
+            let url = dogList[i].querySelector("h2").parentElement.getAttribute("href");
+
+            if (title.includes("#")) {
+                let titleArr = title.split("#");
+                title = titleArr[0];
+                url = titleArr[1];
+            }
+
+
+            let img = dogList[i].querySelector("img");
+            let h2 = document.createElement("h2");
+            h2.innerHTML = title;
+            let dogCard = document.createElement("a");
+            dogCard.setAttribute('href', url);
+            dogCard.classList.add("dog-card");
+            let dogCardCol1 = document.createElement("div");
+            dogCardCol1.append(img);
+            let dogCardCol2 = document.createElement("div");
+            dogCardCol2.append(h2);
+            let symbolsDiv = document.createElement("div");
+            symbolsDiv.classList.add("dogcard-symbols");
+
+            dogCard.append(dogCardCol1, dogCardCol2, symbolsDiv);
+
+            hideFromUpdated = parseSymbols(summary, symbolsDiv);
+            if (hideFromUpdated && tag == "updated") {
+                continue;
+            }
+            dogsOnPage.push(currentUrl);
+
+            if (isDog && dogsSmall != null) {
+                if (cHeight <= 45) {
+                    dogsSmall.appendChild(dogCard);
+                    hasSmallDogs = true;
+                }
+                else if (cHeight <= 54) {
+                    dogsMiddle.appendChild(dogCard);
+                    hasMediumDogs = true;
+                }
+                else {
+                    dogsBig.appendChild(dogCard);
+                    hasBigDogs = true;
+                }
+            } else {
+                dogShelfWrapper.appendChild(dogCard);
+            }
+        }
+        if (dogsSmall != null) {
+            if (hasSmallDogs && !dogShelfWrapper.contains(dogsSmall)) dogShelfWrapper.appendChild(dogsSmall);
+            if (hasMediumDogs && !dogShelfWrapper.contains(dogsMiddle)) dogShelfWrapper.appendChild(dogsMiddle);
+            if (hasBigDogs && !dogShelfWrapper.contains(dogsBig)) dogShelfWrapper.appendChild(dogsBig);
+        }
+
+        if (dogShelfWrapper.contains(dogsSmall)) {
+            dogShelfWrapper.appendChild(dogsMiddle);
+        }
+
+        if (dogShelfWrapper.contains(dogsMiddle)) {
+            dogShelfWrapper.appendChild(dogsMiddle);
+        }
+
+        if (dogShelfWrapper.contains(dogsBig)) {
+            dogShelfWrapper.appendChild(dogsBig);
+        }
+        
+    }
+
+    function getDogsByTagSync(tag="updated", sortedBySize=true, addToSelector="#dogs-list", ammount=1000, addLastElement=null) {
+        let dogsOnPage = [];
+        let loadingInfo = document.createElement("p");
+        loadingInfo.innerHTML = "Lade Hunde...";
+
+        let dogsSmall;
+        let dogsMiddle;
+        let dogsBig;
+
+        if (sortedBySize) {
+            dogsSmall = document.createElement("div");
+            dogsSmall.innerHTML = '<h2 class="dogshelf-header">Klein (bis 45cm)<\/h2>'
+    
+            dogsMiddle = document.createElement("div");
+            dogsMiddle.innerHTML = '<h2 class="dogshelf-header">Mittelgroß (45-54cm)<\/h2>'
+
+            dogsBig = document.createElement("div");
+            dogsBig.innerHTML = '<h2 class="dogshelf-header">Groß (ab 55cm)<\/h2>'
+        }
+        
+        let dogShelf = document.querySelector(addToSelector);
+        let dogShelfWrapper = document.createElement("div");
+        dogShelfWrapper.classList.add("dogshelf-wrapper")
+        dogShelf.appendChild(dogShelfWrapper);
+
+        dogShelf.appendChild(loadingInfo);
+
+        let done = false;
+        let pIdx = 0;
+
+        const ajaxLoop = () => {
+
+            if(pIdx > 30 || dogsOnPage.length >= ammount) {
+                loadingInfo.remove();
+                return;
+            }
+
+            let apiURL = '/app/blogpage?page=' + pIdx + '&withinCms=1&layout=1&tag=' + tag;
+            
+            if (tag == "updated") {
+                apiURL = '/app/blogpage?page=' + pIdx + '&withinCms=1&layout=1&category=' + tag
+            }
+            
+            if (tag == "alle") {
+                apiURL = '/app/blogpage?page=' + pIdx + '&withinCms=1&layout=1';
+            }
+
+
+            ajax(apiURL, 'get', (obj) => {
+                pIdx++;
+                let dogList;
+
+                if (obj.responseText.startsWith("<div style")) {
+                    done = true;
+                    loadingInfo.remove();
+
+                } else {
+                    dogList = createElementsFromHTML(obj.responseText);
+
+                    if(sortedBySize) {
+                        sortDogs(dogList, dogsOnPage, dogShelfWrapper, tag, dogsSmall, dogsMiddle, dogsBig, ammount);
+                    } else {
+                        sortDogs(dogList, dogsOnPage, dogShelfWrapper, tag, null, null, null, ammount);
+                    }
+                    if (addLastElement != null) {
+                        dogShelfWrapper.append(addLastElement);
+                    }
+                    ajaxLoop();
+                }
+            });
+        };
+
+        ajaxLoop();
+    }
+
+
+    document.addEventListener("DOMContentLoaded", function () {
+        var header = document.querySelector(".jtpl-header");
+
+        let homebutton = document.createElement("div");
+        homebutton.classList.add("snhg-home-logo");
+        homebutton.innerHTML = `<a href="/"><\/a>`
+        let searchButton = document.createElement("div");
+        searchButton.classList.add("search-button");
+        searchButton.innerHTML = `
+        <svg width="30" height="30" viewBox="0 0 13 13"><title>suchen<\/title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"><\/path><\/svg>
+                `
+
+        let searchWidget = document.createElement("div");
+        searchWidget.classList.add("gcse-search");
+        let wd;
+        searchButton.onclick = () => {
+            wd = header.querySelector("#___gcse_0");
+            wd.style.visibility = wd.style.visibility == "hidden" || wd.style.visibility == "" ? "visible" : "hidden";
+        }
+        
+        header.append(homebutton, searchButton, searchWidget);
+
+        let doc = document.documentElement;
+        let w = window;
+
+        let prevScroll = w.scrollY || doc.scrollTop;
+        let curScroll;
+        let direction = 0;
+        let prevDirection = 0;
+
+        let checkScroll = function () {
+            
+            curScroll = w.scrollY || doc.scrollTop;
+            if (curScroll > prevScroll) {
+                direction = 2;
+            }
+            else if (curScroll < prevScroll) {
+                direction = 1;
+            }
+
+            if (direction !== prevDirection) {
+                toggleHeader(direction, curScroll);
+            }
+
+            prevScroll = curScroll;
+        };
+
+        let toggleHeader = function (direction, curScroll) {
+            if (direction === 2 && curScroll > 52) {
+                header.classList.add('hide');
+                prevDirection = direction;
+            }
+            else if (direction === 1) {
+                header.classList.remove('hide');
+                prevDirection = direction;
+            }
+        };
+
+        window.addEventListener('scroll', checkScroll);
+
+        let summary = document.querySelector('meta[property="og:description"]').content.split(";");;
+        let dogHeader = document.querySelector(".j-blog-post--header");
+
+        // On Blogpages Do:
+        if (dogHeader) {
+            doneParsing = false;
+            document.head.querySelectorAll('[property="article:tag"][content]').forEach(tag => {
+                
+                if (["huendinnen", "rueden", "spezielle-hunde", "hunde-in-deutschland", "versteckt", "junghunde"].includes(tag.content) && !doneParsing) {
+                    const title = document.querySelector(".j-blog-post--headline").innerHTML;
+                    realURL = title.split("#")[1];
+                    if (realURL != undefined) window.location = realURL;
+                    parseSymbols(summary, dogHeader);
+                    let subtitle = document.querySelector("h2");
+                    subtitle.innerHTML = summary[0];
+                    let tbl = fillDogTable(summary, document.querySelector("table"));
+                    doneParsing = true;
+                }
+            });
+
+        }
+    });
+//]]>
+</script>

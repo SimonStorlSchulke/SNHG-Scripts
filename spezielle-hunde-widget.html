@@ -1,0 +1,55 @@
+<div class="special-dogs-shelf">
+</div>
+<script>
+/* <![CDATA[ */
+document.addEventListener("DOMContentLoaded", function (event) {
+    ajax("/app/blogpage?page=0&withinCms=1&layout=1&tag=spezielle-hunde", 'get', (obj) => {
+        var div = document.createElement('div');
+        div.innerHTML = obj.responseText.trim();
+
+        dogList = createElementsFromHTML(obj.responseText);
+        let dogShelf = document.querySelector(".special-dogs-shelf");
+
+        for (let i = 0; i < dogList.length; i++) {
+
+            let summary = "";
+            try {
+                summary = dogList[i].childNodes[4].innerHTML;
+                summary = summary.replace(/(\r\n|\n|\r)/gm, "").split(";");
+                cHeight = summary[3].substring(0, 2);
+            } catch (error) {
+                isDog = false;
+                continue;
+            }
+
+            let title = dogList[i].childNodes[3].querySelector("h2").innerHTML;
+            let subTitle = summary[2];
+            let img = dogList[i].querySelector("img");
+
+            let h2Title = document.createElement("h2");
+            let pBirth = document.createElement("p");
+            pBirth.innerHTML = "Geb. ca. " + summary[2];
+            let spanDescr = document.createElement("span");
+            spanDescr.innerHTML = summary[4];
+            h2Title.innerHTML = title + ", " + summary[0];
+            let dogCard = document.createElement("a");
+            dogCard.setAttribute('href', dogList[i].querySelector("h2").parentElement.getAttribute("href"));
+            dogCard.classList.add("special-dog-card");
+            let dogCardCol1 = document.createElement("div");
+            dogCardCol1.append(img);
+
+
+            let dogCardCol2Top = document.createElement("div");
+            let dogCardCol2 = document.createElement("div");
+
+            dogCardCol2Top.append(h2Title, pBirth, spanDescr);
+            dogCardCol2.append(dogCardCol2Top);
+            dogCard.append(dogCardCol1, dogCardCol2);
+            dogCard.style.marginTop="30px";
+            dogShelf.append(dogCard);
+        }
+
+    });
+});
+/*]]>*/
+</script>
