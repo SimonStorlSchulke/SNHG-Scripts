@@ -4,6 +4,7 @@
 
     :root {
     --main-accent-color: #ff9f10;
+    --main-accent-color-light: #f5dcbe;
     --card-background: #fdfbf7;
     }
 
@@ -197,6 +198,14 @@
     .gsc-search-button-v2 {
         background-color: var(--main-accent-color) !important;
         border-color: var(--main-accent-color) !important;
+    }
+
+    .hidden-display {
+        display: none;
+    }
+
+    .hidden-visibility {
+        visibility: "hidden";
     }
 
     @media (max-width: 900px) {
@@ -583,7 +592,7 @@
 
     .snhg-button:hover, .snhg-button-accent:hover {
         color: black;
-        background-color: #f5dcbe !important;
+        background-color: var(--main-accent-color-light) !important;
     }
 
     
@@ -709,6 +718,18 @@
 <script type="text/javascript" defer="defer">
 //<![CDATA[
 
+    function parseDesc(summary) {
+        let desc = "";
+        summary.forEach(str => {
+            if (str.startsWith("preview: ")) {
+                desc = str.substring(9);
+                console.log(desc);
+                return;
+            }
+        });
+        return desc;
+    }
+
     function parseSymbols(summary, addTo) {
         let hideFromUpdated = false;
         if (summary.includes(" Notfall") || summary.includes("Notfall")) {
@@ -824,7 +845,7 @@
         tbl.rows[2].cells[1].innerHTML = summary[3] === " ??cm" ? "Noch nicht gemessen" : summary[3];
     }
 
-    function sortDogs(dogList, dogsOnPage, dogShelfWrapper, tag, dogsSmall=null, dogsMiddle=null, dogsBig=null, maxDogsOnPage=10000) {
+    function sortDogs(dogList, dogsOnPage, dogShelfWrapper, tag, dogsSmall=null, dogsMiddle=null, dogsBig=null, maxDogsOnPage=10000, gendericons=false) {
         let hasSmallDogs = false;
         let hasMediumDogs = false;
         let hasBigDogs = false;
@@ -851,7 +872,13 @@
 
             if (dogList[i].childNodes[3] == undefined) continue;
 
-            let title = dogList[i].childNodes[3].querySelector("h2").innerHTML;
+            let title;
+            try {
+
+                title = dogList[i].childNodes[3].querySelector("h2").innerHTML;
+            } catch {
+                continue;
+            }
 
             if (title.includes(" und ") || title.includes("&")) {
                 continue;
@@ -883,10 +910,20 @@
                 url = titleArr[1];
             }
 
+            if (gendericons == true) {
+                //title  += "♂"
+                if(summary[1] == "weiblich") {
+                    title += " ♀";
+                } else if (summary[1] == "männlich") {
+                    title += " ♂";
+                }
+            }
+
 
             let img = dogList[i].querySelector("img");
             let h2 = document.createElement("h2");
             h2.innerHTML = title;
+            
             let dogCard = document.createElement("a");
             dogCard.setAttribute('href', url);
             dogCard.classList.add("dog-card");
@@ -894,6 +931,18 @@
             dogCardCol1.append(img);
             let dogCardCol2 = document.createElement("div");
             dogCardCol2.append(h2);
+
+            if (tag=="hunde-der-woche") {
+                let desc = parseDesc(summary);
+                console.log(desc);
+                if (desc == "") {desc = "wünscht sich sehr ein eigenes Zuhause"}
+                let h2desc = document.createElement("h2");
+                h2desc.innerHTML = desc;
+                h2desc.style.cssText = "font-size: 14px !important; max-width: 90%;"; //urgh
+                dogCardCol2.append(h2desc);
+                h2.style.color = "#ff9f10";
+            }
+
             let symbolsDiv = document.createElement("div");
             symbolsDiv.classList.add("dogcard-symbols");
 
@@ -942,7 +991,7 @@
         
     }
 
-    function getDogsByTagSync(tag="updated", sortedBySize=true, addToSelector="#dogs-list", ammount=1000, addLastElement=null) {
+    function getDogsByTagSync(tag="updated", sortedBySize=true, addToSelector="#dogs-list", ammount=1000, addLastElement=null, genderIcons=false) {
         let dogsOnPage = [];
         let loadingInfo = document.createElement("p");
         loadingInfo.innerHTML = "Lade Hunde...";
@@ -981,7 +1030,7 @@
 
             let apiURL = '/app/blogpage?page=' + pIdx + '&withinCms=1&layout=1&tag=' + tag;
             
-            if (tag == "updated") {
+            if (tag == "updated" || tag == "hunde-der-woche") {
                 apiURL = '/app/blogpage?page=' + pIdx + '&withinCms=1&layout=1&category=' + tag
             }
             
@@ -1002,9 +1051,9 @@
                     dogList = createElementsFromHTML(obj.responseText);
 
                     if(sortedBySize) {
-                        sortDogs(dogList, dogsOnPage, dogShelfWrapper, tag, dogsSmall, dogsMiddle, dogsBig, ammount);
+                        sortDogs(dogList, dogsOnPage, dogShelfWrapper, tag, dogsSmall, dogsMiddle, dogsBig, ammount, genderIcons);
                     } else {
-                        sortDogs(dogList, dogsOnPage, dogShelfWrapper, tag, null, null, null, ammount);
+                        sortDogs(dogList, dogsOnPage, dogShelfWrapper, tag, null, null, null, ammount, genderIcons);
                     }
                     if (addLastElement != null) {
                         dogShelfWrapper.append(addLastElement);

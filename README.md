@@ -1,3 +1,3 @@
 # SNHG Website scripts
 
-Scripts and HTML widget code for [streunernothilfe-grenzenlos.de](streunernothilfe-grenzenlos.de/) (jimdo creator)
+Save place for scripts and HTML widget code for [streunernothilfe-grenzenlos.de](streunernothilfe-grenzenlos.de/) (jimdo creator)
