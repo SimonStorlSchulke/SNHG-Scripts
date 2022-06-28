@@ -1,47 +1,52 @@
+
 <style>
-    .snhg-tag-selector {
-        cursor: pointer;
-        color: black;
-        background-color: #fdfbf7;
-        transition: all 0.2s;
-        border-style: none;
-        padding: 2px 16px;
-        text-align: center;
-        text-decoration: none;
-        display: inline-block;
-        font-size: 14px;
-        height: 26px;
-        width: 25%;
-    }
-
-    .snhg-tag-selector:hover {
-        background-color: var(--main-accent-color-light);
-        color: black;
-    }
-
-    .snhg-button-active {
-        background-color: var(--main-accent-color);
-        color: white;
-    }
-
-    .news-tag-header {
-        margin-bottom: 20px;
-    }
-
-    .news-tag-selector {
-        display: flex;
-        margin-bottom: 30px;
-    }
-
-    @media (max-width: 600px) {
-        .news-tag-selector {
-            display: block;
-        }
-
+    /* <![CDATA[ */
         .snhg-tag-selector {
-            width: 100%;
-            border-radius: 0px !important;
+            cursor: pointer;
+            color: black;
+            background-color: #fdfbf7;
+            transition: all 0.2s;
+            border-style: none;
+            padding: 2px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            height: 26px;
+            width: 25%;
         }
-    }
-
+    
+        .snhg-tag-selector:hover {
+            background-color: var(--main-accent-color-light);
+            color: black;
+        }
+    
+        .snhg-button-active {
+            background-color: var(--main-accent-color);
+            color: white;
+        }
+    
+        .news-tag-header {
+            margin-bottom: 20px;
+        }
+    
+        .news-tag-selector {
+            display: flex;
+            margin-bottom: 30px;
+        }
+    
+        @media (max-width: 520px) {
+            .news-tag-selector {
+                display: block;
+            }
+    
+            .snhg-tag-selector {
+                border-radius: 20px !important;
+                width: fit-content;
+                margin-bottom: 10px;
+            }
+        }
+    
+    /*]]>*/
 </style>
+

@@ -337,6 +337,10 @@
         background: var(--main-accent-color);
     }
 
+    .nur-paten {
+        background: #002F86;
+    }
+
     #dogs-list #cc-matrix- .j-imageSubtitle .cc-imagewrapper a img {
         object-fit: cover;
         width: 180px;
@@ -747,6 +751,14 @@
             addTo.appendChild(pt);
         }
 
+        if (summary.includes(" PA") || summary.includes("PA")) {
+            let pt = document.createElement("p");
+            pt.classList.add("nur-paten")
+            pt.innerHTML = "Nur Paten";
+            hideFromUpdated = true;
+            addTo.appendChild(pt);
+        }
+
         if (summary.includes(" PS") || summary.includes("PS")) {
             let pt = document.createElement("p");
             pt.classList.add("ps-gefunden")
@@ -879,11 +891,11 @@
             } catch {
                 continue;
             }
-
+            
+            
             if (title.includes(" und ") || title.includes("&")) {
                 continue;
             }
-
                     
             if (dogsOnPage.length >= maxDogsOnPage) {
                 
@@ -1068,6 +1080,7 @@
 
 
     document.addEventListener("DOMContentLoaded", function () {
+        
         var header = document.querySelector(".jtpl-header");
 
         let homebutton = document.createElement("div");
@@ -1125,6 +1138,24 @@
             }
         };
 
+        window.addEventListener("load", function() {
+            //Stupid workaround
+            window.setTimeout(function() {
+                let mImages = document.querySelectorAll(".bx-viewport img");
+                if (!window.location.href.startsWith("https://c")) {
+                    mImages.forEach(imgElement => {
+                        console.log("Found Image");
+                        imgElement.addEventListener("click", imageClicked);
+                    });
+            }
+            }, 1000);
+            
+        });
+
+        
+        function imageClicked(event) {        
+          window.open(event.target.src,"_self");
+        }
         window.addEventListener('scroll', checkScroll);
 
         let summary = document.querySelector('meta[property="og:description"]').content.split(";");;
