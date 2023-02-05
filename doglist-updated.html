@@ -1,0 +1,41 @@
+<div id="dogs-list-updated">
+</div>
+<script>
+
+const dogNumber = 7
+    
+/* <![CDATA[ */
+let img = document.createElement("img");
+img.src = "https://image.jimcdn.com/app/cms/image/transf/none/path/sfdce5541d069a958/image/i02e392cc6d4df415/version/1655640312/image.jpg";
+let h2 = document.createElement("h2");
+h2.innerHTML = "Mehr Hunde";
+let dogCard = document.createElement("a");
+dogCard.setAttribute('href', "/hunde-1/");
+dogCard.classList.add("dog-card");
+let dogCardCol1 = document.createElement("div");
+dogCardCol1.append(img);
+let dogCardCol2 = document.createElement("div");
+dogCardCol2.append(h2);
+dogCard.append(dogCardCol1, dogCardCol2);
+
+let imgB = document.createElement("img");
+imgB.src = "https://image.jimcdn.com/app/cms/image/transf/dimension=1920x400:format=jpg/path/sfdce5541d069a958/image/i0c1f70d4dbd1cea3/version/1659203734/image.jpg";
+let h2B = document.createElement("h2");
+h2B.innerHTML = "In Deutschland";
+let dogCardB = document.createElement("a");
+dogCardB.setAttribute('href', "/hunde-1/hunde-in-deutschland/");
+dogCardB.classList.add("dog-card");
+let dogCardCol1B = document.createElement("div");
+dogCardCol1B.append(imgB);
+let dogCardCol2B = document.createElement("div");
+dogCardCol2B.append(h2B);
+dogCardB.append(dogCardCol1B, dogCardCol2B);
+
+let pDiv = document.createElement("div");
+pDiv.append(dogCardB, dogCard);
+pDiv.style.display = "inline";
+
+getDogsByTagSync(tag="updated", sortedBySize=false, addToSelector="#dogs-list-updated", ammount=dogNumber, addLastElement=pDiv);
+
+/*]]>*/
+</script>

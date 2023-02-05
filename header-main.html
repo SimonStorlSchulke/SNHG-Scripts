@@ -8,6 +8,10 @@
     --card-background: #fdfbf7;
     }
 
+    .jtpl-navigation__icon span {
+        border-top: 3px solid #666 !important;
+    }
+
     .j-comment {
         display: none;
     }
@@ -24,6 +28,14 @@
     a {
         border: none !important;
     }
+    
+    .post a:not([href]) {
+    color: black;
+    }
+    
+    .post a:not([href]):hover {
+    color: black;
+    }
 
     .cc-m-form-view-input-wrapper input, .cc-m-form-view-input-wrapper textarea {
         border-radius: 16px;
@@ -37,6 +49,10 @@
 
     .dogshelf-wrapper {
         margin: 0px -8px 0px -8px;
+    }
+
+    .last-dogs-section {
+        display: inline;
     }
 
     .j-module img {
@@ -208,6 +224,13 @@
         visibility: "hidden";
     }
 
+    .j-search-results .j-html {
+        height: fit-content !important;
+    }
+    .j-search-results img {
+        max-width: 300px !important;
+    }
+
     @media (max-width: 900px) {
 
         .special-dog-card {
@@ -311,6 +334,9 @@
         font-size: 18px;
     }
 
+    .last-dogs-section {
+        display: inline !important;
+    }
     
     .fit-content {
         height: fit-content !important;
@@ -324,9 +350,16 @@
     .reserviert {
         background: var(--main-accent-color);
     }
+    
+    .snhg-hr-accent {
+        margin: 30px 0px;
+        height: 3px;
+        background: #ff9f10;
+        border: none
+    }
 
     .in-deutschland {
-        background: var(--main-accent-color);
+        background: #aa9f93;
     }
 
     .hat-anfrage {
@@ -338,6 +371,10 @@
     }
 
     .nur-paten {
+        background: #002F86;
+    }
+
+    .spezielle-hunde {
         background: #002F86;
     }
 
@@ -433,7 +470,7 @@
         position: absolute;
         left: 0px;
         top: 0px;
-        height: 600px;
+        height: 480px;
         width: 100%;
         z-index: 100;
     }
@@ -448,7 +485,7 @@
         color: white;
         max-width: 350px;
         height: fit-content;
-        margin: 80px 10% auto 5px;
+        margin: 60px 10% auto 5px;
         border-radius: 5px;
         padding: 30px;
         background: #aa9f93;
@@ -471,11 +508,11 @@
         grid-area: Banner;
         grid-row-end: end;
         background-color: #666;
-        background-image: url("https://image.jimcdn.com/app/cms/image/transf/dimension=2048x2048:format=jpg/path/sfdce5541d069a958/image/ia03eec9f65a1fc5f/version/1651091240/image.jpg");
+        background-image: url("https://image.jimcdn.com/app/cms/image/transf/dimension=2048x2048:format=jpg/path/sfdce5541d069a958/image/ie8af51aa7bf58efa/version/1666292249/image.jpg");
         background-size: auto;
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: right 0px;
+        background-position: right -80px;
     }
 
     .banner-bottom-wrapper {
@@ -727,7 +764,6 @@
         summary.forEach(str => {
             if (str.startsWith("preview: ")) {
                 desc = str.substring(9);
-                console.log(desc);
                 return;
             }
         });
@@ -736,6 +772,29 @@
 
     function parseSymbols(summary, addTo) {
         let hideFromUpdated = false;
+
+        if (summary.includes("Label") || summary.includes(" Label")) {
+            
+            let ind;
+            try {
+                ind = summary.indexOf("Label");
+            } catch {
+                ind = summary.indexOf(" Label");
+            }
+
+            let pt = document.createElement("p");
+            pt.classList.add("label");
+            try {
+                let tx = summary[ind+1].split("#");
+                pt.innerHTML = tx[0];
+                pt.style.backgroundColor = "#"+tx[1];
+            }
+            catch (error) {
+                pt.innerHTML = "(labeltext)";
+            }
+            addTo.appendChild(pt);
+        }
+
         if (summary.includes(" Notfall") || summary.includes("Notfall")) {
             let pt = document.createElement("p");
             pt.classList.add("notfall")
@@ -755,6 +814,14 @@
             let pt = document.createElement("p");
             pt.classList.add("nur-paten")
             pt.innerHTML = "Nur Paten";
+            hideFromUpdated = true;
+            addTo.appendChild(pt);
+        }
+
+        if (summary.includes(" SP") || summary.includes("SP")) {
+            let pt = document.createElement("p");
+            pt.classList.add("spezielle-hunde")
+            pt.innerHTML = "Spezielle Hunde";
             hideFromUpdated = true;
             addTo.appendChild(pt);
         }
@@ -787,6 +854,7 @@
             }
             addTo.appendChild(pt);
         }
+
         return hideFromUpdated
     }
 
@@ -862,6 +930,12 @@
         let hasMediumDogs = false;
         let hasBigDogs = false;
 
+        if (!sortedBySize) {
+            let last = document.createElement("section");
+            last.classList.add("last-dogs-section");
+            dogShelfWrapper.appendChild(last);
+        }
+
         cards = [];
 
         for (let i=0; i < dogList.length; i++) {
@@ -891,7 +965,14 @@
             } catch {
                 continue;
             }
-            
+
+            let uploadDate;
+            try {
+
+                uploadDate = dogList[i].childNodes[2].textContent;
+            } catch {
+                continue;
+            }
             
             if (title.includes(" und ") || title.includes("&")) {
                 continue;
@@ -959,28 +1040,45 @@
             symbolsDiv.classList.add("dogcard-symbols");
 
             dogCard.append(dogCardCol1, dogCardCol2, symbolsDiv);
+            dogCard.setAttribute("uploaddate", uploadDate);
 
             hideFromUpdated = parseSymbols(summary, symbolsDiv);
             if (hideFromUpdated && tag == "updated") {
                 continue;
             }
             dogsOnPage.push(currentUrl);
-
+            
             if (isDog && dogsSmall != null) {
                 if (cHeight <= 45) {
-                    dogsSmall.appendChild(dogCard);
+                    if (hideFromUpdated) {
+                        dogsSmall.querySelector(".last-dogs-section").appendChild(dogCard);
+                    } else {
+                        dogsSmall.appendChild(dogCard);
+                    }
                     hasSmallDogs = true;
                 }
                 else if (cHeight <= 54) {
-                    dogsMiddle.appendChild(dogCard);
+                    if (hideFromUpdated) {
+                        dogsMiddle.querySelector(".last-dogs-section").appendChild(dogCard);
+                    } else {
+                        dogsMiddle.appendChild(dogCard);
+                    }
                     hasMediumDogs = true;
                 }
                 else {
-                    dogsBig.appendChild(dogCard);
+                    if (hideFromUpdated) {
+                        dogsBig.querySelector(".last-dogs-section").appendChild(dogCard);
+                    } else {
+                        dogsBig.appendChild(dogCard);
+                    }
                     hasBigDogs = true;
                 }
             } else {
-                dogShelfWrapper.appendChild(dogCard);
+                if(hideFromUpdated) {
+                    dogShelfWrapper.querySelector(".last-dogs-section").appendChild(dogCard);
+                } else {
+                    dogShelfWrapper.appendChild(dogCard);
+                }
             }
         }
         if (dogsSmall != null) {
@@ -990,20 +1088,32 @@
         }
 
         if (dogShelfWrapper.contains(dogsSmall)) {
+            if(dogsSmall.querySelector("section") != null) {
+                dogsSmall.appendChild(dogsSmall.querySelector("section"));
+            }
             dogShelfWrapper.appendChild(dogsMiddle);
         }
 
         if (dogShelfWrapper.contains(dogsMiddle)) {
+            if(dogsMiddle.querySelector("section") != null) {
+                dogsMiddle.appendChild(dogsMiddle.querySelector("section"));
+            }
             dogShelfWrapper.appendChild(dogsMiddle);
         }
 
         if (dogShelfWrapper.contains(dogsBig)) {
+            if(dogsBig.querySelector("section") != null) {
+                dogsBig.appendChild(dogsBig.querySelector("section"));
+            }
             dogShelfWrapper.appendChild(dogsBig);
         }
-        
+
+        if(sortedBySize == false && dogShelfWrapper.querySelector("section") != null) {
+            dogShelfWrapper.appendChild(dogShelfWrapper.querySelector("section"));
+        }
     }
 
-    function getDogsByTagSync(tag="updated", sortedBySize=true, addToSelector="#dogs-list", ammount=1000, addLastElement=null, genderIcons=false) {
+    function getDogsByTagSync(tag="updated", sortedBySize=true, addToSelector="#dogs-list", ammount=1000, addLastElement=null, genderIcons=false, callback=null) {
         let dogsOnPage = [];
         let loadingInfo = document.createElement("p");
         loadingInfo.innerHTML = "Lade Hunde...";
@@ -1014,13 +1124,13 @@
 
         if (sortedBySize) {
             dogsSmall = document.createElement("div");
-            dogsSmall.innerHTML = '<h2 class="dogshelf-header">Klein (bis 45cm)<\/h2>'
+            dogsSmall.innerHTML = '<h2 class="dogshelf-header">Klein (bis 45cm)<\/h2><section class="last-dogs-section"><\/section>'
     
             dogsMiddle = document.createElement("div");
-            dogsMiddle.innerHTML = '<h2 class="dogshelf-header">Mittelgroß (45-54cm)<\/h2>'
+            dogsMiddle.innerHTML = '<h2 class="dogshelf-header">Mittelgroß (45-54cm)<\/h2><section class="last-dogs-section"><\/section>'
 
             dogsBig = document.createElement("div");
-            dogsBig.innerHTML = '<h2 class="dogshelf-header">Groß (ab 55cm)<\/h2>'
+            dogsBig.innerHTML = '<h2 class="dogshelf-header">Groß (ab 55cm)<\/h2><section class="last-dogs-section"><\/section>'
         }
         
         let dogShelf = document.querySelector(addToSelector);
@@ -1028,7 +1138,7 @@
         dogShelfWrapper.classList.add("dogshelf-wrapper")
         dogShelf.appendChild(dogShelfWrapper);
 
-        dogShelf.appendChild(loadingInfo);
+        //dogShelf.appendChild(loadingInfo);
 
         let done = false;
         let pIdx = 0;
@@ -1037,6 +1147,9 @@
 
             if(pIdx > 30 || dogsOnPage.length >= ammount) {
                 loadingInfo.remove();
+                if (callback != null) {
+                        callback();
+                    };
                 return;
             }
 
@@ -1058,6 +1171,9 @@
                 if (obj.responseText.startsWith("<div style")) {
                     done = true;
                     loadingInfo.remove();
+                    if (callback != null) {
+                        callback();
+                    };
 
                 } else {
                     dogList = createElementsFromHTML(obj.responseText);
@@ -1089,15 +1205,37 @@
         let searchButton = document.createElement("div");
         searchButton.classList.add("search-button");
         searchButton.innerHTML = `
-        <svg width="30" height="30" viewBox="0 0 13 13"><title>suchen<\/title><path d="m4.8495 7.8226c0.82666 0 1.5262-0.29146 2.0985-0.87438 0.57232-0.58292 0.86378-1.2877 0.87438-2.1144 0.010599-0.82666-0.28086-1.5262-0.87438-2.0985-0.59352-0.57232-1.293-0.86378-2.0985-0.87438-0.8055-0.010599-1.5103 0.28086-2.1144 0.87438-0.60414 0.59352-0.8956 1.293-0.87438 2.0985 0.021197 0.8055 0.31266 1.5103 0.87438 2.1144 0.56172 0.60414 1.2665 0.8956 2.1144 0.87438zm4.4695 0.2115 3.681 3.6819-1.259 1.284-3.6817-3.7 0.0019784-0.69479-0.090043-0.098846c-0.87973 0.76087-1.92 1.1413-3.1207 1.1413-1.3553 0-2.5025-0.46363-3.4417-1.3909s-1.4088-2.0686-1.4088-3.4239c0-1.3553 0.4696-2.4966 1.4088-3.4239 0.9392-0.92727 2.0864-1.3969 3.4417-1.4088 1.3553-0.011889 2.4906 0.45771 3.406 1.4088 0.9154 0.95107 1.379 2.0924 1.3909 3.4239 0 1.2126-0.38043 2.2588-1.1413 3.1385l0.098834 0.090049z"><\/path><\/svg>
+<svg class="search-button" fill="#666" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 30 30" width="30px" height="30px"><title>suchen<\/title><path d="M 13 3 C 7.4889971 3 3 7.4889971 3 13 C 3 18.511003 7.4889971 23 13 23 C 15.396508 23 17.597385 22.148986 19.322266 20.736328 L 25.292969 26.707031 A 1.0001 1.0001 0 1 0 26.707031 25.292969 L 20.736328 19.322266 C 22.148986 17.597385 23 15.396508 23 13 C 23 7.4889971 18.511003 3 13 3 z M 13 5 C 17.430123 5 21 8.5698774 21 13 C 21 17.430123 17.430123 21 13 21 C 8.5698774 21 5 17.430123 5 13 C 5 8.5698774 8.5698774 5 13 5 z"/><\/svg>
                 `
 
         let searchWidget = document.createElement("div");
-        searchWidget.classList.add("gcse-search");
+        searchWidget.innerHTML = `
+        <div class="j-search-wrapper j-search-alignment-0">
+            <div class="j-search-content" style="width: 100%;">
+                <form action="/search" class="j-formnew">
+                    <span class="cc-m-form-view-sortable">
+                        <input type="text" class="j-search-input" aria-label="Search" name="q" placeholder="Suche ..." value="">
+                        <input type="hidden" name="filter" value="0">
+                        <input type="hidden" name="module" value="13991901790">
+                        <button type="submit" style="display: none">
+                    
+                
+            <\/button><\/span><\/form><\/div>
+        <\/div>
+        `
         let wd;
+        searchWidget.style.visibility = "hidden";
+        searchWidget.style.position = "absolute";
+        searchWidget.style.float = "right";
+        searchWidget.style.right = "0px";
+        searchWidget.style.borderRadius = "0px 0px 0px 7px";
+        searchWidget.style.background = "white";
+        searchWidget.style.padding = "6px";
         searchButton.onclick = () => {
-            wd = header.querySelector("#___gcse_0");
-            wd.style.visibility = wd.style.visibility == "hidden" || wd.style.visibility == "" ? "visible" : "hidden";
+            console.log("searching")
+            //wd = header.querySelector("j-search-wrapper");
+            searchWidget.style.visibility = searchWidget.style.visibility == "hidden" || searchWidget.style.visibility == "" ? "visible" : "hidden";
+            searchWidget.querySelector(".j-search-input").focus();
         }
         
         header.append(homebutton, searchButton, searchWidget);
@@ -1111,6 +1249,8 @@
         let prevDirection = 0;
 
         let checkScroll = function () {
+
+            let w = screen.width;
             
             curScroll = w.scrollY || doc.scrollTop;
             if (curScroll > prevScroll) {
@@ -1128,7 +1268,7 @@
         };
 
         let toggleHeader = function (direction, curScroll) {
-            if (direction === 2 && curScroll > 52) {
+            if (direction === 2 && curScroll > 52 && screen.width > 766) {
                 header.classList.add('hide');
                 prevDirection = direction;
             }
@@ -1144,7 +1284,6 @@
                 let mImages = document.querySelectorAll(".bx-viewport img");
                 if (!window.location.href.startsWith("https://c")) {
                     mImages.forEach(imgElement => {
-                        console.log("Found Image");
                         imgElement.addEventListener("click", imageClicked);
                     });
             }
@@ -1178,6 +1317,17 @@
                 }
             });
 
+        }
+
+        let searchResults = document.querySelector(".j-search-results");
+        if (searchResults) {
+            searchResults.querySelectorAll("#cc-matrix-2").forEach(ccm => {
+                let text = ccm.childNodes[1];
+
+                let textparts =  text.innerText.split("ausgefüllt");
+                text.innerText = textparts[textparts.length-1] + "...";
+
+            });
         }
     });
 //]]>
